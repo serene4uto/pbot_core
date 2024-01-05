@@ -25,18 +25,18 @@
     </joint>
 
 
+  <!-- Add the gps link so we get a static transform for the GPS -->
+  <link name="gps_link"></link>
+  
+  <joint name="gps_joint" type="fixed">
+    <parent link="mid_mount"/>
+    <child link="gps_link"/>
+    <origin xyz="0 0 0.5" rpy="0 0 0"/>
+  </joint>
+
+
   <xacro:include filename="$(find pbot_description)/urdf/accessories/velodyne_vlp16_mount.urdf.xacro" />
 
   <xacro:velodyne_vlp16_mount prefix="front" parent_link="front_mount" topic="front/scan"/>
-
-  <!-- Include the velodyne description -->
-  <!-- <xacro:if value="$(optenv PBOT_LASER 0)">
-    <xacro:unless value="$(optenv PBOT_LASER_VELODYNE_VLP16 0)">
-      <xacro:include filename="$(find pbot_description)/urdf/accessories/velodyne_vlp16_mount.urdf.xacro" />
-      <xacro:velodyne_vlp16_mount prefix="$(optenv PBOT_LASER_MOUNT front)"
-                         parent_link="$(optenv PBOT_LASER_MOUNT front)_mount"
-                         topic="$(optenv PBOT_LASER_TOPIC front/scan)"/>
-    </xacro:unless>
-  </xacro:if> -->
   
 </robot>
