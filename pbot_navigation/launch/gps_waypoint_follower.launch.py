@@ -44,7 +44,7 @@ def generate_launch_description():
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 PathJoinSubstitution(
-                    [FindPackageShare('pbot_navigation'), 'launch', 'dual_ekf_navsat.launch.py']
+                    [FindPackageShare('pbot_localization'), 'launch', 'dual_ekf_navsat.launch.py']
                 )
             )
         ),

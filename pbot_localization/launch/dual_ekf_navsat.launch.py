@@ -16,7 +16,7 @@ def generate_launch_description():
     )
 
     config_dual_ekf_navsat = PathJoinSubstitution(
-        [FindPackageShare("pbot_navigation"), 
+        [FindPackageShare("pbot_localization"), 
          "config", 
          "dual_ekf_navsat_params.yaml"],
     )

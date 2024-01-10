@@ -1,8 +1,8 @@
 from setuptools import find_packages, setup
-import os
 from glob import glob
+import os
 
-package_name = 'pbot_navigation'
+package_name = 'pbot_mapping'
 
 setup(
     name=package_name,
@@ -14,6 +14,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
         (os.path.join('share', package_name, 'config'), glob('config/*')),
+        (os.path.join('share', package_name, 'map'), glob('map/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -24,10 +25,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'interactive_waypoint_follower = pbot_navigation.interactive_waypoint_follower:main',
-            'gps_waypoint_logger = pbot_navigation.gps_waypoint_logger:main',
-            'logged_waypoint_follower = pbot_navigation.logged_waypoint_follower:main',
-            'interactive_gps_waypoint_logger = pbot_navigation.interactive_gps_waypoint_logger:main',
+            'map_saver_gui = pbot_mapping.map_saver_gui:main',
         ],
     },
 )

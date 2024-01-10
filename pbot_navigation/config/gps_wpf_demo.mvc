@@ -54,3 +54,13 @@ displays:
       draw_style: points
       position_tolerance: 0
       buffer_size: 1
+  - type: mapviz_plugins/navsat
+    name: new display
+    config:
+      visible: true
+      collapsed: false
+      topic: /igw_gps_points
+      color: "#ff0000"
+      draw_style: points
+      position_tolerance: 0
+      buffer_size: 50

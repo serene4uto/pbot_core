@@ -99,6 +99,22 @@ def generate_launch_description():
 
     # Primary IMU
     #TODO: Add IMU
+    node_um7_imu = Node(
+        package='umx_driver',
+        executable='um7_driver',
+        output='both',
+        parameters=[
+            {'port': '/dev/ttyIMU'},
+            {'baud': 115200},
+            {'frame_id': 'imu_link'},
+        ],
+        remappings=[
+            ('/imu/data', '/um7_imu/data'),
+            ('/imu/mag', '/um7_imu/mag'),
+            ('/imu/rpy', '/um7_imu/rpy'),
+            ('/imu/temperature', '/um7_imu/temperature')
+        ]
+    )
 
     # GPS
     config_ublox_gps_zedf9p = PathJoinSubstitution(
@@ -119,10 +135,18 @@ def generate_launch_description():
         ]
     )
 
+    node_rtcm_provider = Node(
+        package='rtcm_provider',
+        executable='rtcm_ntrip_pub',
+        output='both',
+    )
+
     ld.add_action(node_velodyne_driver)
     ld.add_action(node_velodyne_transform)
     ld.add_action(node_velodyne_laserscan)
     ld.add_action(node_ublox_gps)
+    ld.add_action(node_rtcm_provider)
+    # ld.add_action(node_um7_imu)
 
     return ld
 
