@@ -1,0 +1,4 @@
+pyubx2
+pygnssutils>=1.0.16
+haversine
+pytz
